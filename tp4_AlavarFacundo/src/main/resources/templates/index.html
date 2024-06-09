@@ -3,13 +3,42 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Inicio</title>
+		<title>Facultad de Ingenieria- Universidad nacional de Jujuy	</title>
 		<link th:rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
 	</head>
 	
 	<body>
-	
-	
+		<header class="bg-primary text-white text-center py-4">
+			<h1>Facultad de Ingenieria</h1>
+			<p>Innovacón y Exelencia de Ingenieria</p>
+		</header>
+		
+		<!-- Barra de navegacion -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">Facultad</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Inicio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Acerca de</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Carreras</a>.
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Noticias</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contacto</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
