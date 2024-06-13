@@ -1,49 +1,51 @@
 package ar.edu.unju.fi.controller;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import ar.edu.unju.fi.collections.AlumnoCollection;
 import ar.edu.unju.fi.model.Alumno;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
+@Controller
+@RequestMapping("/alumno")
 public class AlumnoController {
-	
-	@GetMapping("/alumnos")
-	public String listarAlumnos(Model model) {
-		model.addAttribute("alumnos", AlumnoCollection.getAlumnos());
-		return "listaAlumnos";
-	}
-    
-	@GetMapping("/alumnos/agregar")
-	public String mostrarFormularioAgregar(Model model) {
-		model.addAttribute("alumno", new Alumno());
-		return "formularioAgregarAlumno";
-	}
-	
-	@PostMapping("/alumnos/agregar")
-	public String agregarAlumno(@ModelAttribute Alumno alumno) {
-		AlumnoCollection.agregarAlumno(alumno);
-		return "redirect:/alumnos";
-	}
-	
-	@GetMapping("/alumnos/eliminar/{codigo}")
-	public String eliminarAlumno(@PathVariable String codigo) {
-		// Lógica.
-		return "redirect:/alumnos";
-	}
-	
-	@GetMapping("/alumnos/modificar/{codigo}")
-	public String mostrarFormularioModificar(@PathVariable String codigo, Model model) {
-		// Lógica.
-		return "formularioModificarAlumno";
-	}
-    
-	@PostMapping("/alumnos/modificar")
-	public String modificarAlumno(@ModelAttribute Alumno alumno) {
-		// Lógica.
-		return "redirect:/alumnos";
-	}
+
+    @GetMapping("/listar")
+    public String listar(Model model) {
+        model.addAttribute("alumnos", AlumnoCollection.getAlumnos());
+        return "listarAlumnos";
+    }
+
+    @GetMapping("/agregar")
+    public String agregar(Model model) {
+        model.addAttribute("alumno", new Alumno("", "", "", "", "", LocalDate.now(), "", ""));
+        return "agregarAlumno";
+    }
+
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute Alumno alumno) {
+        AlumnoCollection.agregarAlumno(alumno);
+        return "redirect:/alumno/listar";
+    }
+
+    @GetMapping("/editar/{dni}")
+    public String editar(@PathVariable String dni, Model model) {
+        Alumno alumno = AlumnoCollection.buscarAlumno(dni);
+        model.addAttribute("alumno", alumno);
+        return "editarAlumno";
+    }
+
+    @PostMapping("/modificar")
+    public String modificar(@ModelAttribute Alumno alumno) {
+        AlumnoCollection.modificarAlumno(alumno);
+        return "redirect:/alumno/listar";
+    }
+
+    @GetMapping("/eliminar/{dni}")
+    public String eliminar(@PathVariable String dni) {
+        AlumnoCollection.eliminarAlumno(dni);
+        return "redirect:/alumno/listar";
+    }
 }
