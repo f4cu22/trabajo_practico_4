@@ -1,39 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang ="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Facultad de Ingenieria- Universidad nacional de Jujuy	</title>
-		<link th:rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
-	</head>
-	
-	<body>
-		<!-- Incluir el fragmento de encabezado -->
-		<div th:replace="~{layouts/header :: header}"></div>
-		
-		
-		<div class="container-fluid">
-			<div class="row">
-				<aside class="col-md-3 bg-light p-3">
-					<h4>Enlaces Útiles</h4>
-					<ul class="list-unstyled">
-						<li><a href="#">Biblioteca</a></li>
-						<li><a href="#">Calendario académico</a></li>
-					</ul>
-				</aside>
-				<main class="col-md-9 p-3">
-					<section>
-						<h2>Bienvenidos a la Facultad</h2>
-						<p>La Facultad de Ciencias de la Universidad Nacional de Jujuy ofrece una educación de calidad...</p>
-					</section>
-					<section>
-						<h2>Noticias Recientes</h2>
-						<p>Últimas noticias sobre eventos, investigaciones, y más...</p>
-					</section>
-				</main>
-			</div>
-		</div>
-    	<!-- Incluir el fragmento de pie de página -->
-		<div th:replace="~{layouts/footer :: footer}"></div>
-	</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Facultad de Ingenieria - Universidad Nacional de Jujuy</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header th:replace="~{layouts/header :: header}"></header>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Barra lateral de enlaces útiles -->
+            <aside class="col-md-3 bg-light p-3">
+                <h4>Recursos útiles</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#">Biblioteca</a></li>
+                    <li><a href="#">Calendario académico</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Contenido principal -->
+            <main class="col-md-9">
+                <section class="shadow-sm py-4" id="descripcion">
+                    <h2>Facultad de Ingeniería - Universidad Nacional de Jujuy</h2>
+                    <div class="py-4 m-auto" style="max-width: 768px">
+                        <img src="/images/fi-unju-main.jpg" alt="Edificio de la facultad de ingeniería" class="img-fluid">
+                    </div>
+                    <p>
+                        La Facultad de Ingeniería de la Universidad Nacional de Jujuy (UNJu) se dedica a formar ingenieros capacitados, comprometidos con la innovación, el desarrollo sostenible y el progreso regional. Con un enfoque en la excelencia académica y la investigación aplicada, la facultad ofrece una variedad de programas de grado y posgrado en diversas disciplinas de la ingeniería.
+                    </p>
+                    <p>
+                        Nuestra misión es proporcionar una educación superior que prepare a nuestros estudiantes para enfrentar los desafíos tecnológicos del futuro, contribuyendo al desarrollo socioeconómico de la región de Jujuy y del país. Fomentamos un ambiente de aprendizaje dinámico e inclusivo, apoyado por una infraestructura moderna y recursos académicos avanzados.
+                    </p>
+                    <p>
+                        Los estudiantes de la Facultad de Ingeniería tienen acceso a diversas oportunidades de aprendizaje práctico, proyectos de investigación y programas de intercambio internacional. Además, mantenemos una sólida colaboración con la industria y otras instituciones académicas, facilitando la inserción laboral y el desarrollo profesional de nuestros egresados.
+                    </p>
+                </section>
+
+                <section id="noticias">
+                    <h2 class="text-center my-3">Últimas Noticias</h2>
+
+                    <article class="shadow-sm py-4">
+                        <h3>Jornada de vacunación UNJu 2024</h3>
+                        <div class="py-3 m-auto" style="max-width: 480px">
+                            <img src="/images/vacunacion-unju-2024.jpg" alt="Jornada de vacunación UNJu 2024" class="img-fluid">
+                        </div>
+                        <p>
+                            El 29 de mayo, la UNJu realizará una jornada de vacunación para estudiantes y personal académico en el Aula Pelayo Pena de la Escuela de Minas "Dr. Horacio Carrillo". ¡No te lo pierdas!
+                        </p>
+                    </article>
+
+                    <article class="shadow-sm py-4">
+                        <h3>52° Aniversario de la Facultad de Ingeniería</h3>
+                        <div class="py-3 m-auto" style="max-width: 480px">
+                            <img src="/images/fi-cumple.jpg" alt="52° Aniversario de la Facultad de Ingeniería" class="img-fluid">
+                        </div>
+                        <p>¡Celebra con nosotros el 52° aniversario de la Facultad de Ingeniería con una chocolatada el próximo viernes 24 de mayo en el patio de Decanato!</p>
+                    </article>
+
+                    <article class="shadow-sm py-4">
+                        <h3>Sesión CAFI - Jueves 23 de mayo/2024</h3>
+                        <div class="py-3 m-auto" style="max-width: 580px">
+                            <img src="/images/cafi.jpg" alt="Sesión CAFI - Jueves 23 de mayo/2024" class="img-fluid">
+                        </div>
+                        <p>
+                            No te pierdas la sesión ordinaria del Consejo Académico el jueves 23 de mayo a las 15:00 horas en la Sala de Profesores de la Facultad de Ingeniería.
+                        </p>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>

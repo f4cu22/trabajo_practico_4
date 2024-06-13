@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Carreras</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    <div class="container my-4">
+        <h2>Lista de Carreras</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Duración</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="carrera : ${carreras}">
+                    <td th:text="${carrera.codigo}"></td>
+                    <td th:text="${carrera.nombre}"></td>
+                    <td th:text="${carrera.duracion}"></td>
+                    <td>
+                        <a th:href="@{/carrera/editar/{codigo}(codigo=${carrera.codigo})}">Editar</a> |
+                        <a th:href="@{/carrera/eliminar/{codigo}(codigo=${carrera.codigo})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/carrera/agregar" class="btn btn-primary">Agregar Carrera</a>
+    </div>
+    <div th:replace="layouts/footer :: footer"></div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

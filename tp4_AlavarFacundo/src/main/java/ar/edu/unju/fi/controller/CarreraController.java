@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 public class CarreraController {
 
     @GetMapping("/listar")
-    public String listar(Model model) {
-        model.addAttribute("carreras", CarreraCollection.getCarreras());
-        return "listarCarreras";
+    public String listarCarreras() {
+        // Lógica para obtener la lista de carreras y pasarla al modelo
+        return "carreras/listar"; // Este nombre debe coincidir con tu template Thymeleaf
     }
 
     @GetMapping("/agregar")

@@ -33,8 +33,12 @@ public class AlumnoController {
     @GetMapping("/editar/{dni}")
     public String editar(@PathVariable String dni, Model model) {
         Alumno alumno = AlumnoCollection.buscarAlumno(dni);
-        model.addAttribute("alumno", alumno);
-        return "editarAlumno";
+        if (alumno != null) {
+            model.addAttribute("alumno", alumno);
+            return "editarAlumno";
+        } else {
+            return "redirect:/alumno/listar"; // Manejar el caso de alumno no encontrado
+        }
     }
 
     @PostMapping("/modificar")
