@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Materia</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    <div class="container my-4">
+        <h2>Editar Materia</h2>
+        <form th:action="@{/materia/modificar}" th:object="${materia}" method="post">
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Código</label>
+                <input type="text" id="codigo" class="form-control" th:field="*{codigo}" readonly="readonly" />
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" th:field="*{nombre}" />
+            </div>
+            <div class="mb-3">
+                <label for="curso" class="form-label">Curso</label>
+                <input type="number" id="curso" class="form-control" th:field="*{curso}" />
+            </div>
+            <div class="mb-3">
+                <label for="cantidadHoras" class="form-label">Cantidad de Horas</label>
+                <input type="number" id="cantidadHoras" class="form-control" th:field="*{cantidadHoras}" />
+            </div>
+            <div class="mb-3">
+                <label for="modalidad" class="form-label">Modalidad</label>
+                <input type="text" id="modalidad" class="form-control" th:field="*{modalidad}" />
+            </div>
+            <div class="mb-3">
+                <label for="docente" class="form-label">Docente</label>
+                <select id="docente" class="form-control" th:field="*{docente}">
+                    <option th:each="docente : ${docentes}" th:value="${docente}" th:text="${docente.nombre + ' ' + docente.apellido}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="carrera" class="form-label">Carrera</label>
+                <select id="carrera" class="form-control" th:field="*{carrera}">
+                    <option th:each="carrera : ${carreras}" th:value="${carrera}" th:text="${carrera.nombre}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <div th:replace="layouts/footer :: footer"></div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
