@@ -11,7 +11,7 @@
     <div class="container my-4">
         <h2>Lista de Carreras</h2>
         <table class="table">
-            <thead>
+            <thead>	
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
@@ -23,7 +23,7 @@
                 <tr th:each="carrera : ${carreras}">
                     <td th:text="${carrera.codigo}"></td>
                     <td th:text="${carrera.nombre}"></td>
-                    <td th:text="${carrera.duracion}"></td>
+                    <td th:text="${carrera.cantidadAnios}"></td>
                     <td>
                         <a th:href="@{/carrera/editar/{codigo}(codigo=${carrera.codigo})}">Editar</a> |
                         <a th:href="@{/carrera/eliminar/{codigo}(codigo=${carrera.codigo})}">Eliminar</a>

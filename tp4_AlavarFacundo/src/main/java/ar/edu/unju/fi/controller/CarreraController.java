@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/carrera")
 public class CarreraController {
 
-    @GetMapping("/listar")
-    public String listarCarreras() {
-        // Lógica para obtener la lista de carreras y pasarla al modelo
-        return "carreras/listar"; // Este nombre debe coincidir con tu template Thymeleaf
-    }
-
+	@GetMapping("/listar")
+	public String listar(Model model) {
+	    model.addAttribute("carreras", CarreraCollection.getCarreras());
+	    return "listarCarreras";
+	}
+	
     @GetMapping("/agregar")
     public String agregar(Model model) {
         model.addAttribute("carrera", new Carrera("", "", (byte) 0, true));
