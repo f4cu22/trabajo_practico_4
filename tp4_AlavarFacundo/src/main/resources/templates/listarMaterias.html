@@ -30,8 +30,10 @@
                     <td th:text="${materia.curso}"></td>
                     <td th:text="${materia.cantidadHoras}"></td>
                     <td th:text="${materia.modalidad}"></td>
-                    <td th:text="${materia.docente.nombre + ' ' + materia.docente.apellido}"></td>
-                    <td th:text="${materia.carrera.nombre}"></td>
+                    <td th:text="${materia.docente != null ? materia.docente.nombre + ' ' + materia.docente.apellido : 'Sin docente'}"></td>
+                    <!-- Verificación de null antes de acceder a materia.carrera -->
+                    <td th:if="${materia.carrera != null}" th:text="${materia.carrera.nombre}"></td>
+                    <td th:if="${materia.carrera == null}">Sin carrera asignada</td>
                     <td>
                         <a th:href="@{/materia/editar/{codigo}(codigo=${materia.codigo})}">Editar</a> |
                         <a th:href="@{/materia/eliminar/{codigo}(codigo=${materia.codigo})}">Eliminar</a>

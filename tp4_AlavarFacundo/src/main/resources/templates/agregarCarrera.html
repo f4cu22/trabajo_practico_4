@@ -20,11 +20,18 @@
                 <input type="text" id="nombre" class="form-control" th:field="*{nombre}" />
             </div>
             <div class="mb-3">
-                <label for="duracion" class="form-label">Duración (años)</label>
-                <input type="number" id="duracion" class="form-control" th:field="*{duracion}" />
+                <label for="cantidadAnios" class="form-label">Duración (años)</label> 
+                <input type="number" class="form-control" id="cantidadAnios" th:field="*{cantidadAnios}">
             </div>
+			<div class="mb-3 form-check">
+				<input type="checkbox" id="estado" class="form-check-input" th:field="*{estado}" />
+				<label for="estado" class="form-check-label">Confirmar</label>
+			</div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+			<div th:if="${error}" class="alert alert-danger" role="alert">
+				<p th:text="${error}"></p>
+			</div>
     </div>
     <div th:replace="layouts/footer :: footer"></div>
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
