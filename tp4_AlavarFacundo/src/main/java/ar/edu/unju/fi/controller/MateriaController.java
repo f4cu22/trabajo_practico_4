@@ -44,11 +44,19 @@ public class MateriaController {
     public String editar(@PathVariable String codigo, Model model) {
         Materia materia = MateriaCollection.buscarMateria(codigo);
         model.addAttribute("materia", materia);
+        model.addAttribute("docentes", DocenteCollection.getDocentes());
+        model.addAttribute("carreras", CarreraCollection.getCarreras());
         return "editarMateria";
     }
 
     @PostMapping("/modificar")
-    public String modificar(@ModelAttribute Materia materia) {
+    public String modificar(@ModelAttribute Materia materia, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("docentes", DocenteCollection.getDocentes());
+            model.addAttribute("carreras", CarreraCollection.getCarreras());
+            return "editarMateria";
+        }
+
         MateriaCollection.modificarMateria(materia);
         return "redirect:/materia/listar";
     }

@@ -4,37 +4,59 @@
 
 <body>
 
-    <header th:replace="~{/layouts/header :: header}"></header>
+<header th:replace="~{/layouts/header :: header}"></header>
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="m-0">Agregar Alumno</h4>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/alumnos/agregar}" th:object="${alumno}" method="post">
-                            <div class="mb-3">
-                                <label for="dni" class="form-label">DNI</label>
-                                <input type="text" class="form-control" id="dni" th:field="*{dni}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
-                            </div>
-                            <!-- Agrega otros campos del alumno aquí -->
-
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="m-0">Agregar Alumno</h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/alumno/guardar}" th:object="${alumno}" method="post">
+                        <div class="mb-3">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="dni" th:field="*{dni}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" th:field="*{telefono}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="domicilio" class="form-label">Domicilio</label>
+                            <input type="text" class="form-control" id="domicilio" th:field="*{domicilio}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lu" class="form-label">LU</label>
+                            <input type="text" class="form-control" id="lu" th:field="*{lu}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer th:replace="~{/layouts/footer :: footer}"></footer>
+<footer th:replace="~{/layouts/footer :: footer}"></footer>
 
-    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
