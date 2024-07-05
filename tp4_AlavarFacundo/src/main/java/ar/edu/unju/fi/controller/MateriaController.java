@@ -50,7 +50,7 @@ public class MateriaController {
     }
 
     @PostMapping("/modificar")
-    public String modificar(@ModelAttribute Materia materia, BindingResult bindingResult, Model model) {
+    public String modificar(@ModelAttribute @Validated Materia materia, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("docentes", DocenteCollection.getDocentes());
             model.addAttribute("carreras", CarreraCollection.getCarreras());

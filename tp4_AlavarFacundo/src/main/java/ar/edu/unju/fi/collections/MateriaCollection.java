@@ -9,8 +9,7 @@ import java.util.function.Predicate;
 import ar.edu.unju.fi.model.Materia;
 
 public class MateriaCollection {
-	private static List<Materia> materias = new ArrayList<>();
-	
+    private static List<Materia> materias = new ArrayList<>();
 
     /**
      * Se trabaja sobre la clase materia
@@ -19,6 +18,12 @@ public class MateriaCollection {
      * @return Objeto materia
      */
     public static List<Materia> getMaterias() {
+        if (materias.isEmpty()) {
+            // Ejemplos de materias
+            materias.add(new Materia("MAT101", "Matemáticas I", 1, 80, "Presencial", null, null));
+            materias.add(new Materia("ING202", "Inglés Avanzado", 2, 60, "Virtual", null, null));
+            materias.add(new Materia("FIS303", "Física II", 3, 70, "Presencial", null, null));
+        }
         return materias;
     }
 
@@ -49,7 +54,7 @@ public class MateriaCollection {
     /**
      * Modifica un objeto
      *
-     * @param materia Objeto 
+     * @param materia Objeto
      */
     public static void modificarMateria(Materia materia) {
         for (Materia m : materias) {
@@ -75,6 +80,4 @@ public class MateriaCollection {
         Optional<Materia> materia = materias.stream().filter(filterCodigo).findFirst();
         return materia.orElse(null);
     }
-
-
 }
